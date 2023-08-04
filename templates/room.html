@@ -1,0 +1,168 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="message-box">
+    <!--Shows us the number of members in the room, Room ID, and the user's Icon-->
+    <h2>
+        <span class="Members">Members: <span class="memberCount" id="members">{{members}}</span></span>
+        <i>Chat Room ID: {{code}}</i>
+        <span class="YouIcon"><img src="{{icon}}" alt="YouIcon" /></span>
+    </h2>
+
+    <!--Show the messages on screen-->
+    <div class="messages" id="messages"></div>
+
+    <!--Message text field with a send button-->
+    <div class="inputs">
+        <input type="text" rows="3" placeholder="Message" name="message" id="message" />
+        <button type="button" name="send" id="send-btn" onClick="sendMessage()"><ion-icon name="send-outline"></ion-icon></button>
+    </div>
+    <!--Leaving the room button-->
+    <a href="{{ url_for('home') }}"><button>Leave</button></a>
+</div>
+
+
+
+<!--Java Script for room.html-->
+<script type="text/javascript">
+    var socketio = io();
+
+    let lock = false; //Make the message color differs from the User sending and recieving)
+
+    //0: User Message
+    //1: Other Messages
+    var i = 0;
+
+    const messages = document.getElementById("messages");
+
+    //Array from Storage (Prevent from clearing when refreshed)
+    messageOrder = JSON.parse(localStorage.getItem("messageInOrder"));
+
+
+
+
+
+    //General Message from User
+    const createMessage = (name, msg, date, Icon, lockIncrement) => {
+
+        const content = `
+        <div class="text">
+            <span class="userMessagesDisplay">
+                <img src="`+Icon+`" alt="?" />
+                <strong class="msg">${name} <span class="muted">${date}</span></strong>
+                <p>${msg}</p>
+            </span>
+        </div>
+        `;
+        messages.innerHTML += content;
+        if (lockIncrement === false){
+            messageInOrder("0");
+        }
+    };
+
+
+    //General Message from other users in the room
+    const createMessageOthers = (name, msg, date, Icon, lockIncrement) => {
+        const content = `
+        <div class="text">
+            <span class="userMessagesDisplayOther">
+                <img src="`+Icon+`" alt="?" />
+                <strong class="msg">${name} <span class="muted">${date}</span></strong>
+                <p>${msg}</p>
+            </span>
+        </div>
+        `;
+        messages.innerHTML += content;
+        if (lockIncrement === false){
+            messageInOrder("1");
+        }
+    };
+
+
+    //Join/Leave message
+    const createMessageSystem = (name, msg) => {
+        const content = `
+        <div class="text">
+            <span class="userMessagesDisplaySystem">
+                <strong class="msgSystem">${msg}</strong>
+            </span>
+        </div>
+        `;
+        messages.innerHTML += content;
+    };
+
+
+    //Add either 0 or 1 depending on the Chat logs and the orgin.
+    function messageInOrder(num){
+        //This will push into the list. This is used to keep track of the order
+        //of the messages when the user refresh the page and style the css accordingly
+        messageOrder.push(num);
+        localStorage.setItem("messageInOrder", JSON.stringify(messageOrder));
+    }
+
+
+    //Calls on the message to display on screen
+    socketio.on("message", (data) => {
+        //console.log(data.name);
+        var elem = document.getElementById('messages');
+        
+        if (lock === true && data.name != ""){ //User Messages
+            createMessage(data.name, data.message, data.messageDate, data.ProfileIcon, false);
+            lock = false;
+            //console.log("UserSent");
+            elem.scrollTop = elem.scrollHeight; //Auto scroll when new message appears
+            //console.log("Auto scroll")
+        }else if (data.name === ""){ //System Messages
+            createMessageSystem(data.name, data.message);
+            //console.log("System Message");
+            elem.scrollTop = elem.scrollHeight; //Auto scroll when new message appears
+        }else{ //Other user messages
+            createMessageOthers(data.name, data.message, data.messageDate, data.ProfileIcon, false);
+            //console.log("OtherSent");
+            elem.scrollTop = elem.scrollHeight; //Auto scroll when new message appears
+        }
+    });
+
+
+
+    //User sending the message
+    const sendMessage = () => {
+        const message = document.getElementById("message");
+
+        if (message.value == "") return;
+        socketio.emit("message", {data: message.value});
+        lock = true; //User sent this message
+        message.value = "";
+    };
+
+
+    //Can send the message by pressing "Enter"
+    document.addEventListener("keypress", function onEvent(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        };
+    });
+
+    console.log(messageOrder);
+</script>
+
+
+
+
+
+
+
+<!--Message History when Other users' join or simply refresh browser-->
+{% for msg in messages %}
+    <script type="text/javascript">
+        //The boolean is set to true to avoid appending duplicates in the list since we are redisplaying existing messages
+        if (messageOrder[i] === "0"){ //By User
+            createMessage("{{msg.name}}", "{{msg.message}}", "{{msg.messageDate}}", "{{msg.ProfileIcon}}", true);
+        }else if (messageOrder[i] === "1"){ //By Others
+            createMessageOthers("{{msg.name}}", "{{msg.message}}", "{{msg.messageDate}}", "{{msg.ProfileIcon}}", true);
+        }
+        console.log(messageOrder[i])
+        i++
+        console.log(i);
+    </script>
+{% endfor %}
+{% endblock %}

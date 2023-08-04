@@ -1,0 +1,468 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+.content{ /* The whole website */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(218, 218, 218);
+    position: fixed;
+}
+
+
+
+
+/* Home page */
+
+/* Title */
+.buttons h3{
+    color: whitesmoke;
+    font-size: 40px;
+    text-align: center;
+}
+.buttons h4{
+    font-size: 20px;
+}
+.buttons h2{
+    padding: 5px;
+}
+/* Overall display of the buttons */
+.buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    color: whitesmoke;
+    background-color: rgb(97, 97, 97);
+    width: 640px;
+    height: 640px;
+    border-radius: 5%;
+    border: 4px solid whitesmoke;
+    box-shadow: -22px 22px 12px rgba(0,0,0,0.3);
+}
+/* Username text bar */
+.enterUsername{
+    width: 95%;
+}
+.enterUsername label{
+    font-size: 26px;
+}
+.enterUsername input{
+    font-size: 25px;
+    border: 4px solid rgb(255, 102, 0);
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    outline: none;
+}
+.enterUsername input:focus{
+    border: 4px solid rgb(0, 208, 255);
+}
+
+/* Join a room text bar */
+.join{
+    width: 95%;
+}
+.join label{
+    font-size: 26px;
+}
+/* Join button */
+.join button{
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid white;
+    color: white;
+    line-height: 35px;
+    width: 49.2%;
+    border-radius: 5px;
+}
+.join button:hover{
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid rgb(0, 208, 255);
+    color: rgb(0, 208, 255);
+    line-height: 35px;
+    cursor: pointer;
+}
+/* Join text input */
+.join input{
+    font-size: 25px;
+    border: 4px solid rgb(255, 102, 0);
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    outline: none;
+}
+.join input:focus{
+    border: 4px solid rgb(0, 208, 255);
+}
+
+.enterUsername input[type="text"],
+.join input[type="text"]{
+    padding: 5px 10px;
+    box-sizing: border-box;
+}
+
+/* Blue buttons w/ hover effect */
+.create-btn{
+    width: 90%;
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid white;
+    color: white;
+    line-height: 35px;
+    border-radius: 5px;
+}
+.create-btn:hover{
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid rgb(0, 208, 255);
+    color: rgb(0, 208, 255);
+    line-height: 35px;
+    cursor: pointer;
+}
+/* Error Message */
+.ErrorMessage{
+    position: absolute;
+    margin-top: 590px;
+    color: rgb(255, 102, 0);
+    font-size: 20px;
+    font-weight: bold;
+}
+/* Display Icon Choices */
+.iconContainer label{
+    font-size: 26px;
+}
+[type=radio]{ /* Hide the radio*/
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+[type=radio] + img{
+    outline: 4px solid rgb(255, 102, 0);
+    cursor: pointer;
+}
+[type=radio]:checked + img{
+    outline: 6px solid rgb(0, 208, 255);
+}
+.iconContainer img{
+    width: 65px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 25%;
+    margin-left: 5px;
+}
+.iconContainer .radioIcons{
+    /* border: 1px solid red; */
+    /* margin-right: -35px; */
+
+    display: flex;
+    flex-direction: row;
+    /* align-items: center;
+    justify-content: center; */
+    gap: 6px;
+    margin-top: 10px;
+    margin-bottom: 4.2px;
+}
+.iconContainer{
+    width: 95%;
+}
+
+#radioIcons, #UploadFile{
+    display: none;
+}
+
+
+
+
+
+.UploadFile{
+    margin-top: 10px;
+}
+
+.UploadFile label{
+    margin-left: 7px;
+}
+.UploadFile input{ /* Upload File */
+    font-size: 10.9px;
+    border: 4px solid rgb(255, 102, 0);
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    outline: none;
+}
+
+.UploadFile .CustomImage{
+    width: 65px;
+    height: 65px;
+    background-image: url('/static/css/Default.png');
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    border-radius: 25%;
+    margin-left: 5px;
+    outline: 4px solid rgb(255, 102, 0);
+    display: inline-block;
+}
+
+
+
+
+
+.iconContainer .ChooseIcon select{
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid rgb(255, 102, 0);
+    color: rgba(245, 245, 245, 0.9);
+    border-radius: 5px;
+
+    padding: 5px 0px;
+    box-sizing: border-box;
+}
+.iconContainer .ChooseIcon select:hover{
+    border: 4px solid rgb(0, 208, 255);
+    cursor: pointer;
+}
+
+.iconContainer .ChooseIcon select option{
+    font-size: 20px;
+    color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Chat Room CSS */
+
+.message-box{
+    border-color: whitesmoke;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 1px;
+    background-color: rgb(97, 97, 97);
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    align-items: stretch;
+    box-shadow: -22px 22px 12px rgba(0,0,0,0.3);
+}
+
+.message-box h2{
+    color: whitesmoke;
+    padding: 25px;
+    border: 4px solid rgb(255, 102, 0);
+    border-radius: 1px;
+}
+.message-box h2 .Members{
+    font-size: 18px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    color: rgb(255, 102, 0);
+}
+.message-box h2 .memberCount{
+    display: block;
+    margin-left: 5px;
+}
+.message-box h2 .YouIcon{
+    display: grid;
+    /* border: 1px solid red; */
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.message-box h2 img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25%;
+    border: 4px solid rgb(0, 208, 255);
+}
+.message-box a button{
+    line-height: 35px;
+    width: 100%;
+    text-decoration: none;
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid whitesmoke;
+    color: whitesmoke;
+    /* border-radius: 5px; */
+}
+.message-box a button:hover{
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid rgb(255, 102, 0);
+    color: rgb(255, 102, 0);
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.messages{
+    overflow-y: scroll; /*Can scroll messages*/
+    flex: 1;
+    width: 100%;
+}
+
+.inputs{
+    padding-bottom: 10px;
+    display: flex;
+}
+
+.inputs input{
+    font-size: 25px;
+    border: 4px solid whitesmoke;
+    color: whitesmoke;
+    background-color: transparent;
+    width: 50%;
+    line-height: 50px;
+    padding-left: 10px;
+    /* border-radius: 5px; */
+    outline: none;
+}
+.inputs input:focus{
+    border: 4px solid rgb(0, 208, 255);
+}
+.inputs button{
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid whitesmoke;
+    color: whitesmoke;
+    width: 12%;
+    line-height: 5px;
+    /* border-radius: 5px; */
+}
+.inputs button:hover{
+    font-size: 25px;
+    background: transparent;
+    border: 4px solid rgb(0, 208, 255);
+    color: rgb(0, 208, 255);
+    width: 12%;
+    /* border-radius: 5px; */
+    cursor: pointer;
+}
+
+h2{
+    text-align: center;
+}
+
+#message{
+    flex: 1;
+}
+
+.text{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding: 10px;
+    box-shadow: -5px 5px 3px rgba(0,0,0,0.3);
+}
+
+/* Chat bubble styles! */
+.text img{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 25%;
+    top: 10px;
+    border: 2px solid rgb(0, 208, 255);
+}
+/* For Messages in general */
+.text .msg{ 
+    position: relative;
+    bottom: 20px;
+    font-size: 21px;
+}
+/* System Message specific */
+.text .msgSystem{
+    font-size: 20px;
+}
+.text p{
+    position: relative;
+    bottom: 15px;
+    font-size: 14px;
+    /* border: 1px solid red; */
+    padding-left: 60px;
+}
+
+/* User messages */
+.text .userMessagesDisplay{
+    width: 100%; 
+    white-space: normal;
+    word-break: break-word;
+    color: whitesmoke;
+    border: 3px solid rgb(0, 208, 255);
+    height: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 208, 255, 0.526);
+}
+
+.muted{
+    position: relative;
+    font-size: 10px;
+    color: rgb(221, 221, 221);
+    bottom: 6px;
+    /* border: 1px solid red; */
+}
+
+/* Other messages */
+.text .userMessagesDisplayOther{
+    width: 100%; 
+    white-space: normal;
+    word-break: break-word;
+    color: whitesmoke;
+    border: 3px solid rgba(0, 208, 255, 0.58);
+    height: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(173, 173, 173, 0.526);
+}
+
+/* System messages */
+.text .userMessagesDisplaySystem{
+    width: 100%; 
+    white-space: normal;
+    word-break: break-word;
+    color: whitesmoke;
+    border: 3px solid rgb(255, 102, 0);
+    height: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
