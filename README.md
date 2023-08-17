@@ -1,4 +1,5 @@
 # Welcome to the BubbleChat-App Repository
+<img src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/dd763b36-dcb7-4608-ac16-e8aba615654f" width="40%" />
 
 
 
