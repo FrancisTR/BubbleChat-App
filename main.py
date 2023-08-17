@@ -239,7 +239,7 @@ def disconnect():
         username.remove(name)
         if rooms[room]["members"] <= 1: #if room empty, delete it
             del rooms[room]
-    send({"name": "", "message": "<Font color='#FF6600'>"+name+" has left the room</Font>"}, to=room) #Send this message to everyone
+    send({"name": "", "message": "<Font color='#FF6600'><i>'"+name+"'</i> has left the room</Font>"}, to=room) #Send this message to everyone
     print(f"{name} has left the room {room}") #Print on the IDE console for Testing
     return render_template("room.html", members=rooms[room]["members"]) #Update room.html
 
@@ -251,5 +251,6 @@ def disconnect():
 if __name__ == "__main__":
     socketio.run(app, debug=True) #Prevents from us rerunning the server
     #app.run(host="0.0.0.0", port=5000)
+    
     #with app.app_context():
     #    db.create_all()

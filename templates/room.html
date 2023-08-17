@@ -13,11 +13,11 @@
 
     <!--Message text field with a send button-->
     <div class="inputs">
-        <input type="text" rows="3" placeholder="Message" name="message" id="message" />
-        <button type="button" name="send" id="send-btn" onClick="sendMessage()"><ion-icon name="send-outline"></ion-icon></button>
+        <input type="text" class="form-control form-control-lg" rows="3" placeholder="Message" name="message" id="message" />
+        <button type="button" class="btn btn-info" name="send" id="send-btn" onClick="sendMessage()"><ion-icon name="send-outline"></ion-icon></button>
     </div>
     <!--Leaving the room button-->
-    <a href="{{ url_for('home') }}"><button>Leave</button></a>
+    <a href="{{ url_for('home') }}"><button type="button" class="btn btn-warning">Leave</button></a>
 </div>
 
 
@@ -26,8 +26,7 @@
 <script type="text/javascript">
     var socketio = io();
 
-    let lock = false; //Make the message color differs from the User sending and recieving)
-
+    let lock = false; //Make the message color differs from the User sending and recieving
     //0: User Message
     //1: Other Messages
     var i = 0;
@@ -43,7 +42,6 @@
 
     //General Message from User
     const createMessage = (name, msg, date, Icon, lockIncrement) => {
-
         const content = `
         <div class="text">
             <span class="userMessagesDisplay">
@@ -58,7 +56,6 @@
             messageInOrder("0");
         }
     };
-
 
     //General Message from other users in the room
     const createMessageOthers = (name, msg, date, Icon, lockIncrement) => {
@@ -91,7 +88,7 @@
     };
 
 
-    //Add either 0 or 1 depending on the Chat logs and the orgin.
+    //Add either 0 or 1 depending on the Chat logs and the origin.
     function messageInOrder(num){
         //This will push into the list. This is used to keep track of the order
         //of the messages when the user refresh the page and style the css accordingly
@@ -102,7 +99,6 @@
 
     //Calls on the message to display on screen
     socketio.on("message", (data) => {
-        //console.log(data.name);
         var elem = document.getElementById('messages');
         
         if (lock === true && data.name != ""){ //User Messages
@@ -110,7 +106,6 @@
             lock = false;
             //console.log("UserSent");
             elem.scrollTop = elem.scrollHeight; //Auto scroll when new message appears
-            //console.log("Auto scroll")
         }else if (data.name === ""){ //System Messages
             createMessageSystem(data.name, data.message);
             //console.log("System Message");
@@ -141,11 +136,7 @@
             sendMessage();
         };
     });
-
-    console.log(messageOrder);
 </script>
-
-
 
 
 
@@ -160,9 +151,9 @@
         }else if (messageOrder[i] === "1"){ //By Others
             createMessageOthers("{{msg.name}}", "{{msg.message}}", "{{msg.messageDate}}", "{{msg.ProfileIcon}}", true);
         }
-        console.log(messageOrder[i])
+        //console.log(messageOrder[i])
         i++
-        console.log(i);
+        //console.log(i);
     </script>
 {% endfor %}
 {% endblock %}

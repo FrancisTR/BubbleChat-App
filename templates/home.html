@@ -13,7 +13,7 @@
     <div class="enterUsername">
         <label>Username:</label>
         <br>
-        <input type="text" placeholder="Enter your Name" name="name" value="{{name}}" minlength="2" maxlength="10" required />
+        <input type="text" class="form-control form-control-lg" aria-label=".form-control-lg example" placeholder="Enter your Name" name="name" value="{{name}}" minlength="2" maxlength="10" required />
     </div>
 
 
@@ -22,8 +22,8 @@
     <div class="iconContainer">
         <div class="ChooseIcon">
             <label for="ChooseIcon">Profile Icon Options:<br>
-                <select id="ChooseIcon" name="ChooseIcon" autocomplete="off" onchange="dropDown();" required>
-                    <option value="" value='none'>-------(Select One)-------</option>
+                <select class="form-select" aria-label="Default select example" id="ChooseIcon" name="ChooseIcon" autocomplete="off" onchange="dropDown();" required>
+                    <option value="">(Select One)</option>
                     <option value="DefaultIcons">Choose Icons</option>
                     <option value="UploadIcon">Upload Custom Icon</option>
                 </select>
@@ -32,30 +32,30 @@
         <!--First Option-->
         <div class="radioIcons" id="radioIcons">
             <label for="Icon1">
-                <input type="radio" name="ProfileIcon" id="Icon1" value="Icon1">
-                <img src="/static/css/Icon1.png" alt="IconPicture" draggable="false">
+                <input type="radio" name="ProfileIcon" id="Icon1" value="Icon1" checked>
+                <img src="/static/css/Icon1.png" alt="IconPicture" draggable="false" />
             </label>
             
             <label for="Icon2">
                 <input type="radio" name="ProfileIcon" id="Icon2" value="Icon2">
-                <img src="/static/css/Icon2.jpg" alt="IconPicture" draggable="false">
+                <img src="/static/css/Icon2.jpg" alt="IconPicture" draggable="false" />
             </label>
 
             <label for="Icon3">
                 <input type="radio" name="ProfileIcon" id="Icon3" value="Icon3">
-                <img src="/static/css/Icon3.gif" alt="IconPicture" draggable="false">
+                <img src="/static/css/Icon3.gif" alt="IconPicture" draggable="false" />
             </label>
 
             <label for="Icon4">
                 <input type="radio" name="ProfileIcon" id="Icon4" value="Icon4">
-                <img src="/static/css/Icon4.gif" alt="IconPicture" draggable="false">
+                <img src="/static/css/Icon4.gif" alt="IconPicture" draggable="false" />
             </label>
         </div>
         <!--Second Option-->
         <div class="UploadFile" id="UploadFile">
             <div class="CustomImage" id="CustomImage"></div> <!--Display the custom icon the user uploaded-->
             <label for="Icon5">
-                <input type="file" name="ProfileIcon" id="Icon5" value="Icon5" accept=".png, .jpg, .gif" onchange="encodeImageAsURL(this)" />
+                <input type="file" class="form-control form-control-sm" name="ProfileIcon" id="Icon5" value="Icon5" accept=".png, .jpg, .gif" />
             </label>
         </div>
     </div>
@@ -66,26 +66,21 @@
     <div class="join">
         <label>Enter the Room Code:</label>
         <br>
-        <input type="text" placeholder="Room Code" name="code" value="{{code}}" />
+        <input type="text" class="form-control form-control-lg" aria-label=".form-control-lg example" placeholder="Room Code" name="code" value="{{code}}" />
         <br>
 
-        <br>
-        <button type="submit" name="join">Join Room</button>
-        <br>
+        <!-- Join Room -->
+        <button type="submit" name="join" class="btn btn-primary">Join Room</button>
+        <!--Create Room-->
+        <!-- <button type="submit" name="create" class="create-btn">Create Room</button> -->
+        <button type="submit" name="create" class="btn btn-warning">Create Room</button>
     </div>
-
-
-    <h2>Or</h2>
-
-
-    <!--Create Room-->
-    <button type="submit" name="create" class="create-btn">Create Room</button>
-
 
 
     <!--Error Message-->
     {% if error %}
-        <div class="ErrorMessage">Error: {{error}}</div>
+        <!-- <div class="ErrorMessage">Error: {{error}}</div> -->
+        <div class="alert alert-warning" id="ErrorMessage" role="alert">Error: {{error}}</div>
     {% endif %}
 
 
@@ -110,21 +105,11 @@
                 uploaded_image = reader.result;
                 //Display image using url(${uploaded_image})
                 document.querySelector("#CustomImage").style.backgroundImage = `url(${uploaded_image})`;
-                document.querySelector("#CustomImage").style.outline = `4px solid rgb(0, 208, 255)`;
+                document.querySelector("#CustomImage").style.outline = `4px solid var(--bs-info)`;
             });
             reader.readAsDataURL(this.files[0]);
         });
 
-        //Experiment for encoding custom images
-        function encodeImageAsURL(element){
-            console.log(element);
-            var ImgFile = element.files[0];
-            var reader = new FileReader();
-            // reader.onloadend = function() {
-            //     console.log('RESULT', reader.result);
-            // }
-            reader.readAsDataURL(ImgFile);
-        }
 
 
 
