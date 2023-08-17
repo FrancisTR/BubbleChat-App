@@ -44,7 +44,7 @@ Rick's info:
   
 Roll's info:
 <br>
-<img width="40%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/54a5ede9-eb1d-4c32-9b28-43aca77935b0" />
+<img width="40%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/815f783e-f059-407c-ad0f-8140b02996f2" />
 <br>
 <i>Note: Although you can upload any images, this app only supports .png, .jpg, and .gif. If you upload anything other than what the file supports, the image will not display in the chat room.</i>
 
