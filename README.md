@@ -1,36 +1,34 @@
-# Welcome to the BubbleChatApp Repository
+# Welcome to the BubbleChat-App Repository
 
 
 
 ## Description
-A summer project where I created a simple chat app.
+A summer project where I created a chat app. The goal is to learn and implement new Frameworks and libraries to this application.
 
 
 
 ## Languages/Libraries Used
-- Python <img width="3%" src="https://github.com/FrancisTR/BubbleChatApp/assets/123771828/e85be96f-b328-47e9-bd72-70d6082e7d72" />
-- HTML <img width="3%" src="https://github.com/FrancisTR/BubbleChatApp/assets/123771828/11625855-8fe7-4d8d-ba5c-baea4fe145d1" />
-- CSS <img width="3%" src="https://github.com/FrancisTR/BubbleChatApp/assets/123771828/673dee35-4239-4ff9-b801-e362e3012b52" />
-- JavaScript <img width="3%" src="https://github.com/FrancisTR/BubbleChatApp/assets/123771828/3ff74b6c-4110-401a-878d-7a9483650bb5" />
-- SocketIO <img width="3%" src="https://github.com/FrancisTR/BubbleChatApp/assets/123771828/96181c95-3209-49af-b699-7b3ff4c75329" />
+- Python <img width="3%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/556b1040-37aa-4c92-8bdd-dc8dc0313195" />
+- HTML <img width="3%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/da6ce8b1-5cd6-45dc-bffa-e214e3886841" />
+- CSS <img width="3%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/293da3de-3ab4-41e3-991e-088841f5ded8" />
+- JavaScript <img width="3%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/b8718bda-a523-459b-b182-8021a17fccf7" />
+- SocketIO <img width="3%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/9747b22e-7c0e-4d62-a47e-31677ca9dbd5" />
+- Sqlite <img width="3%" src="https://github.com/FrancisTR/BubbleChat-App/assets/123771828/96640fee-2aa5-46e0-a682-1949e052e891" />
 
 
 
-## FrameWorks
-- Flask <img width="3%" src="https://github.com/FrancisTR/BubbleChatApp/assets/123771828/5b432659-e3c5-4f35-8248-da5443bdd360" />
-
-
-
-## Link to the Chat App
-Coming soon!
+## Frameworks
+- Flask <img width="3%" src="https://github.com/FrancisTR/FrancisTR/assets/123771828/76784eca-2d10-4b96-b252-5a45fe3ac044" />
+- Bootstrap <img width="3%" src="https://github.com/FrancisTR/FrancisTR/assets/123771828/3ad2e079-89ac-4e91-9daa-61b565ead8c1" />
 
 
 
 ## How to use the App
-<img width="50%" alt="BubbleChat" src="https://github.com/FrancisTR/BubbleChatApp/assets/123771828/ffef571f-1b17-43f0-9954-a53e4962724f">
-
 1. Create a Username for yourself.
-2. Choose a Profile Icon. Note that if you do not choose a Profile Icon, it will set a Default Icon for you.
+2. Choose a Profile Icon. You have the option to choose icons that is already built in or upload your custom profile icon.
 3. Enter a Room Code OR Create a Room.
 4. Have fun chatting!
 
+
+
+### Screenshots of the Chat Application
